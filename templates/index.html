@@ -1,14 +1,26 @@
+
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
 <script>
-    var socket = io.connect('http://localhost:5000')
+ 
+	function execute(nome_script) {
+	
+	    var socket = io.connect('http://localhost:5000')
+	
+	    socket.on('connect', function() {
+	        console.log('Successfully connected to server!');
+	        socket.emit(nome_script)
+	    })
+	
+	    socket.on(nome_script, function(data) {
+	        // console.log(data);
+	        document.write(data);
+	    })
+	}
 
-    socket.on('connect', function() {
-        console.log('Successfully connected to server!');
-        socket.emit('start_all')
-    })
-
-    socket.on('start_all', function(data) {
-        // console.log(data);
-        document.write(data);
-    })
 </script>
+
+
+
+<button  onclick="execute(nome_script='start_all');">start_all</button>
+<button  onclick="execute(nome_script='start_all2');">start_all2</button>
+

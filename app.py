@@ -18,5 +18,13 @@ def start_all():
     start_all()
 
 
+@socket.on('start_all2')
+def start_all2():
+    from function_start_all import start_all2
+    start_all2()
+
+
+
+
 if __name__ == '__main__':
-    socket.run(app)
+    socket.run(app, debug=True)
